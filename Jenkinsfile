@@ -11,7 +11,7 @@ pipeline {
                 echo 'Installing project dependencies...'
                 script {
                   
-                  sh 'npm config set registry "https://registry.npmmirror.com"'
+                  sh '/usr/bin/npm config set registry "https://registry.npmmirror.com"'
 
 
                 }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo 'Starting build stage...'
                 script {
-                    sh 'npm run build'
+                    sh '/usr/bin/npm run build'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 script {
-                    sh 'npm run test'
+                    sh '/usr/bin/npm run test'
                 }
             }
             post {
