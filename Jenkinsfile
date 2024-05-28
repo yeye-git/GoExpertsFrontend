@@ -1,4 +1,5 @@
 pipeline {
+  agent any
  environment {
         // 适用于Node.js项目的环境变量设置
         S3_BUCKET = 'www.goexpert.info'  // S3桶名称
