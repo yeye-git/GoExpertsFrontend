@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Installing project dependencies...'
                 script {
-                   sh 'npm install'，
+                  
                   sh 'npm config set registry "https://registry.npmmirror.com"'
 
 
