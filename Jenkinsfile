@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo 'Installing project dependencies...'
                 script {
-                    sh '/usr/bin/npm npm install'
+                    sh '/usr/bin/npm install'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo 'Starting build stage...'
                 script {
-                    sh ' /usr/bin/npm npm run build'
+                    sh ' /usr/bin/npm run build'
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 script {
-                    sh '/usr/bin/npm npm run test'
+                    sh '/usr/bin/npm run test'
                 }
             }
             post {
