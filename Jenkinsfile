@@ -1,19 +1,32 @@
 pipeline {
-  agent any
+    agent any
  environment {
         // 适用于Node.js项目的环境变量设置
         S3_BUCKET = 'www.goexpert.info'  // S3桶名称
     }
 
+
+ 
+
     stages {
+
+            stage('git checkout') {
+            steps {
+                script {
+                    git(
+                        branch: 'main',
+                        url: 'git@github.com:yeye-git/GoExpertsFrontend.git',
+                        credentialsId: 'github-ssh'
+                   )
+                }
+            }   
+        }
+
         stage('Install Dependencies') {
             steps {
                 echo 'Installing project dependencies...'
                 script {
-                  
-                  sh '/usr/bin/npm config set registry "https://registry.npmmirror.com"'
-
-
+                    sh 'npm install'
                 }
             }
         }
@@ -22,7 +35,7 @@ pipeline {
             steps {
                 echo 'Starting build stage...'
                 script {
-                    sh '/usr/bin/npm run build'
+                    sh 'npm run build'
                 }
             }
         }
@@ -31,7 +44,7 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 script {
-                    sh '/usr/bin/npm run test'
+                    sh 'npm run test'
                 }
             }
             post {
@@ -81,8 +94,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up...'
-           
+            cleanWs()
         }
     }
 }
-
