@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo 'Installing project dependencies...'
                 script {
-                    sh 'npm install'
+                    sh '/usr/bin/npm npm install'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo 'Starting build stage...'
                 script {
-                    sh 'npm run build'
+                    sh ' /usr/bin/npm npm run build'
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 script {
-                    sh 'npm run test'
+                    sh '/usr/bin/npm npm run test'
                 }
             }
             post {
@@ -94,7 +94,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up...'
-            cleanWs()
+            // cleanWs()
         }
     }
 }
