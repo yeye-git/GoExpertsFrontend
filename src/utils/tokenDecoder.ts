@@ -24,4 +24,3 @@ const tokenDecoder = (token: string | null): ITokenPayload => {
 };
 
 export default tokenDecoder;
-
