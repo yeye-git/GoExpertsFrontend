@@ -1,10 +1,5 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { store } from './store'; 
-
-import Router from './routes';
 import './App.css';
-
 
 function App() {
   return (
@@ -13,5 +8,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
