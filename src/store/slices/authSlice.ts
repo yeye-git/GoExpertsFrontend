@@ -54,4 +54,3 @@ export const { setCredentials, removeCredentials } = slice.actions;
 export const selectCurrentUserRole = (state: RootState) => state.auth.role;
 
 export default slice.reducer;
-
