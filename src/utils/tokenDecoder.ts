@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import ITokenPayload from 'types/ITokenPayload';
+import ITokenPayload from '../types/ITokenPayload';
 
 /**
  * Decode Json Web Token
@@ -7,16 +7,21 @@ import ITokenPayload from 'types/ITokenPayload';
  * @returns decoded payload
  */
 const tokenDecoder = (token: string | null): ITokenPayload => {
-  const decoded = jwt.decode(token as string);
+  const decoded = jwt.decode(token as string) as ITokenPayload;
   if (!decoded) {
     return {
-      id: null,
-      role: null,
-      firstName: null,
-      email: null,
+      userId: '',
+      username: '',
+      iat: 0,
+      exp: 0,
+      id: '',
+      role: '',
     };
   }
-  return decoded as ITokenPayload;
+
+  // 显式转换解码后的结果为 ITokenPayload 类型
+  return decoded;
 };
 
 export default tokenDecoder;
+

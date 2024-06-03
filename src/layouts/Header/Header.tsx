@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectCurrentUserRole } from 'store/slices/authSlice';
-import userIconPlaceholder from 'assets/images/user-icon-placeholder.png';
+import { selectCurrentUserRole } from '../../store/slices/authSlice';
+import userIconPlaceholder from '../../assets/images/user-icon-placeholder.png';
 import AppBar from './AppBar';
 import Authentication from './Authentication';
 import Logo from './Logo';

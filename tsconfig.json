@@ -21,7 +21,12 @@
     "jsx": "react-jsx",
     "checkJs": true,
     "baseUrl": "./src",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "paths": {
+      "types/*": ["types/*"],
+      "store/*": ["store/*"],
+      "src/*": ["src/*"]
+    }
   },
   "include": [
     "src"

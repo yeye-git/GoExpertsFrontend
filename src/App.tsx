@@ -1,11 +1,15 @@
 import React from 'react';
-import Router from 'routes';
+import { Provider } from 'react-redux';
+import { store } from './store'; 
+
+import Router from './routes';
 import './App.css';
+
 
 function App() {
   return (
     <div>
-      <Router />
+      <a href="https://reactjs.org">learn react</a>
     </div>
   );
 }

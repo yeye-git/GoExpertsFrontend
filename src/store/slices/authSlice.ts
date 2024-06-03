@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { get as storageGet, clearLocalStorage } from 'utils/localStorage';
-import tokenDecoder from 'utils/tokenDecoder';
-import ITokenPayload from 'types/ITokenPayload';
+import { get as storageGet, clearLocalStorage } from '../../utils/localStorage';
+import tokenDecoder from '../../utils/tokenDecoder';
+import ITokenPayload from '../../types/ITokenPayload';
 import type { RootState } from '../index';
 
 // Define a type for the slice state
@@ -11,13 +11,18 @@ interface AuthState {
   token: string | null;
 }
 
-const storedToken: string | null = JSON.parse(storageGet('token'));
-const tokenPayload: ITokenPayload = tokenDecoder(storedToken);
+// Remove the duplicate interface declaration
+// interface ITokenPayload {
+//   id: string;
+//   role: string;
+// }
 
-// Define the initial state using that type
+const storedToken: string | null = JSON.parse(storageGet('token'));
+const tokenPayload: ITokenPayload | null = storedToken ? tokenDecoder(storedToken) : null;
+
 const initialState: AuthState = {
-  id: tokenPayload.id,
-  role: tokenPayload.role,
+  id: tokenPayload?.id ?? null,
+  role: tokenPayload?.role ?? null,
   token: storedToken,
 };
 
@@ -49,3 +54,4 @@ export const { setCredentials, removeCredentials } = slice.actions;
 export const selectCurrentUserRole = (state: RootState) => state.auth.role;
 
 export default slice.reducer;
+
